@@ -11,12 +11,12 @@ export default async function getPostText() {
 
  const stream = await openai.chat.completions.create({
   model: "gpt-4o",
-  messages: [{ role: "user", content: "write a tweet from " + response.data + "include link to drive bc and remove text DriveBC Alert. Include hashtag #Coquihalla #CoquihallaWeather #BCWeather #RoadCondition"}],
+  messages: [{ role: "user", content: "write a tweet from " + response.data + "include reference to DriveBC https://www.drivebc.ca and remove text DriveBC Alert. Remove undefined. Include only hashtags #Coquihalla #CoquihallaWeather #CoquihallaSummit #CoquihallaRoadCondition #DriveCoquihalla"}],
   stream: true,
 });
 var tweetString = '';
 for await (const chunk of stream) {
-  tweetString = tweetString + chunk.choices[0]?.delta?.content || "";
+  tweetString = tweetString + (chunk.choices[0]?.delta?.content || "");
   //process.stdout.write(chunk.choices[0]?.delta?.content || "");
 }
   // Generate the text for your post here. You can return a string or a promise that resolves to a string
