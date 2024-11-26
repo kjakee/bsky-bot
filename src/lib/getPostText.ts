@@ -11,7 +11,7 @@ export default async function getPostText() {
 
  const stream = await openai.chat.completions.create({
   model: "gpt-4o",
-  messages: [{ role: "user", content: "write a tweet from " + response.data + "include reference to DriveBC https://www.drivebc.ca and remove text DriveBC Alert. Remove undefined. Include only hashtags #Coquihalla #CoquihallaWeather #CoquihallaSummit #CoquihallaRoadCondition #DriveCoquihalla"}],
+  messages: [{ role: "user", content: "write a tweet from " + response.data + "include reference to DriveBC and remove text DriveBC Alert. Include only hashtags #Coquihalla #CoquihallaWeather #CoquihallaSummit #CoquihallaRoadCondition #DriveCoquihalla"}],
   stream: true,
 });
 var tweetString = '';
