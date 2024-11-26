@@ -19,7 +19,6 @@ for await (const chunk of stream) {
   tweetString = tweetString + (chunk.choices[0]?.delta?.content || "");
   //process.stdout.write(chunk.choices[0]?.delta?.content || "");
 }
-  tweetString = tweetString + ' source: DriveBC';
   // Generate the text for your post here. You can return a string or a promise that resolves to a string
   return tweetString;
 }
